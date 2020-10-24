@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+/* import { useRouter } from "next/router";
 import Head from "next/head";
 import DefaultErrorPage from "next/error";
 
@@ -100,7 +100,6 @@ const Blog = props => {
                                     <div>&nbsp;</div>
                                     <div>&nbsp;</div>
                                     <b>{author.name}</b>
-                                    <b>{author.name}</b>
                                 </>
                             ) : (
                                 <b>Unknown</b>
@@ -125,7 +124,7 @@ const Blog = props => {
                 </Grid>
             </Grid>
 
-            <div style={{ height: 50 }} />
+            <div style={{ height: 10 }} />
             <Typography gutterBottom variant="h5" component="h4">
                 You may also like
             </Typography>
@@ -222,3 +221,4 @@ export const getStaticProps = async ctx => {
 };
 
 export default Blog;
+ */
