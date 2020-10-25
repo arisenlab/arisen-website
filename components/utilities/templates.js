@@ -5,8 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
     picture: {
-        width: "100%",
-        height: "100%",
+        width: "80%",
+        height: "80%",
         borderRadius: "20px",
     },
 }));
@@ -15,7 +15,7 @@ const ParagraphWithPicture = ({ imageURL, children, alter = false }) => {
     const classes = useStyles();
 
     return (
-        <Grid container spacing={2} alignItems="center">
+        <Grid container spacing={3} alignItems="center">
             {!alter ? (
                 <>
                     <Grid item md={6} align="center">

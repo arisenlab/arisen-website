@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     navLinks: {
-        [theme.breakpoints.up("xs")]: {
+        [theme.breakpoints.down("md")]: {
             display: "none",
         },
         [theme.breakpoints.up("md")]: {
@@ -54,7 +54,10 @@ export default function ButtonAppBar() {
 
     return (
         <div>
-            <AppBar position="fixed" style={{ backgroundColor: "#fff" }}>
+            <AppBar
+                position="fixed"
+                style={{ backgroundColor: "#fff", zIndex: 1 }}
+            >
                 <Toolbar>
                     <IconButton
                         onClick={toggleDrawer(true)}

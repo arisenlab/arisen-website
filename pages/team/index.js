@@ -24,6 +24,14 @@ const useStyles = makeStyles(theme => ({
         margin: "auto",
         width: "80%",
     },
+    mindanaoStyle: {
+        position: "fixed",
+        width: 300,
+        left: "75%",
+        height: "100%",
+        opacity: "20%",
+        zIndex: -1,
+    },
 }));
 
 const Team = ({ directorInfos, facultyInfos, studentInfos }) => {
@@ -31,6 +39,10 @@ const Team = ({ directorInfos, facultyInfos, studentInfos }) => {
 
     return (
         <div className={classes.teamContainer}>
+            <img
+                src="/Team/mindanao_design.png"
+                className={classes.mindanaoStyle}
+            />
             <div style={{ height: 150 }} />
 
             <PageTitleSection

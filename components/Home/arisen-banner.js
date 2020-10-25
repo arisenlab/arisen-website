@@ -16,6 +16,16 @@ const useStyles = makeStyles(theme => ({
         width: "80%",
         height: "80%",
     },
+    puzzleContainer: {
+        position: "relative",
+    },
+    puzzle: {
+        position: "absolute",
+        top: -200,
+        left: 100,
+        width: 400,
+        zIndex: -1,
+    },
 }));
 
 const ArisenBanner = () => {
@@ -27,8 +37,10 @@ const ArisenBanner = () => {
             <Grid item align="center" md={6}>
                 <img src="/Home/Home-Logo.png" className={classes.logo} />
             </Grid>
-
-            <Grid item md={6}>
+            <Grid item sm className={classes.puzzleContainer}>
+                <img src="/Home/home_design1.png" className={classes.puzzle} />
+            </Grid>
+            <Grid item md={5}>
                 <Typography variant="h3" component="h3">
                     Welcome to ARISEn
                 </Typography>

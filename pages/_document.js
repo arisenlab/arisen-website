@@ -13,6 +13,15 @@ export default class MyDocument extends Document {
                         name="theme-color"
                         content={theme.palette.primary.main}
                     />
+                    <link
+                        rel="stylesheet"
+                        href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
+                    />
+                    <link
+                        rel="icon"
+                        type="image/png"
+                        href="/website_logo.png"
+                    />
                 </Head>
                 <body>
                     <Main />
