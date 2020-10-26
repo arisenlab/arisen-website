@@ -17,6 +17,9 @@ module.exports = {
             "/blogs": {
                 page: "/blogs",
             },
+            "/join-us": {
+                page: "/join-us",
+            },
         };
 
         return path;
