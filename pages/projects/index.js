@@ -8,6 +8,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import AndroidIcon from "@material-ui/icons/Android";
+import AppleIcon from "@material-ui/icons/Apple";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -16,7 +18,9 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/page-title-section")
+    import("../../components/utilities/templates").then(
+        template => template.PageTitle
+    )
 );
 
 const ProjectCard = dynamic(() =>
@@ -51,7 +55,7 @@ const styles = theme => ({
     },
 });
 
-const Projects = () => {
+const Projects = ({ projectInfo }) => {
     const classes = useStyles();
     const [currentProject, setCurrentProject] = React.useState(null);
 
@@ -66,11 +70,19 @@ const Projects = () => {
     return (
         <div className={classes.projectsContainer}>
             <div style={{ height: 150 }} />
-            <PageTitleSection
-                logoURL="/Projects/projects-logo.png"
-                title="Projects"
-                subtitle="ARISEn’s hard worked projects"
-            />
+
+            <PageTitleSection logoURL="/Projects/projects-logo.png">
+                <Typography variant="h3">Projects</Typography>
+
+                <Typography variant="h5" gutterBottom>
+                    ARISEn’s hard worked projects
+                </Typography>
+
+                <Typography variant="body1">
+                    A project that is passionately developed by ARISEn's Team so
+                    that you can focus on the things that are best for you
+                </Typography>
+            </PageTitleSection>
 
             <Grid container spacing={3}>
                 {projectInfo.map(project => {
@@ -94,7 +106,9 @@ const Projects = () => {
             >
                 <DialogTitle onClose={handleClose}>
                     {currentProject ? (
-                        <Typography>{currentProject.name}</Typography>
+                        <Typography variant="h4" component="h1">
+                            {currentProject.name}
+                        </Typography>
                     ) : null}
                     <IconButton
                         aria-label="close"
@@ -106,9 +120,33 @@ const Projects = () => {
                 </DialogTitle>
                 <DialogContent dividers>
                     {currentProject ? (
-                        <Typography gutterBottom>
-                            {currentProject.description}
-                        </Typography>
+                        <>
+                            <DialogContentText>
+                                <Typography gutterBottom>
+                                    {currentProject.description}
+                                </Typography>
+                            </DialogContentText>
+                            {currentProject.platform === "mobile" ? (
+                                <>
+                                    <Typography>Download Here</Typography>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        style={{ marginRight: 10 }}
+                                        startIcon={<AppleIcon />}
+                                    >
+                                        App Store
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        startIcon={<AndroidIcon />}
+                                    >
+                                        Google Play Store
+                                    </Button>
+                                </>
+                            ) : null}
+                        </>
                     ) : null}
                 </DialogContent>
                 <DialogActions>
@@ -120,5 +158,9 @@ const Projects = () => {
         </div>
     );
 };
+
+export async function getStaticProps() {
+    return { props: { projectInfo } };
+}
 
 export default Projects;

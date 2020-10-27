@@ -1,9 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 import dynamic from "next/dynamic";
 
 const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/page-title-section")
+    import("../../components/utilities/templates").then(
+        template => template.PageTitle
+    )
 );
 const DirectorCorner = dynamic(() =>
     import("../../components/Team/director-corner")
@@ -45,11 +48,20 @@ const Team = ({ directorInfos, facultyInfos, studentInfos }) => {
             />
             <div style={{ height: 150 }} />
 
-            <PageTitleSection
-                logoURL="/Team/team-logo.png"
-                title="Team"
-                subtitle="The people behind the projects"
-            />
+            <PageTitleSection logoURL="/Team/team-logo.png">
+                <Typography variant="h3">Team</Typography>
+
+                <Typography variant="h5" gutterBottom>
+                    The people behind the projects
+                </Typography>
+
+                <Typography variant="body1">
+                    The projects build is not possible without these passionate
+                    people. We recruit students who is passionate in building
+                    solutions towards the problem. Also, the ones who loves to
+                    change the world through technology.
+                </Typography>
+            </PageTitleSection>
 
             <div style={{ height: 50 }} />
 

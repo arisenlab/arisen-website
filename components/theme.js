@@ -5,10 +5,10 @@ import { red } from "@material-ui/core/colors";
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#556cd6",
+            main: "#035B96",
         },
         secondary: {
-            main: "#19857b",
+            main: "#333333",
         },
         error: {
             main: red.A400,
@@ -23,36 +23,31 @@ const theme = createMuiTheme({
         },
         h1: {
             fontSize: "5rem",
+            fontFamily: "Source Sans Pro",
             fontWeight: 900,
         },
         h2: {
+            fontFamily: "Source Sans Pro",
             fontWeight: 900,
         },
         h3: {
+            fontFamily: "Source Sans Pro",
             fontWeight: 700,
         },
         h4: {
+            fontFamily: "Source Sans Pro",
             fontWeight: 700,
         },
         h5: {
+            fontFamily: "Source Sans Pro",
             fontWeight: 600,
         },
         h6: {
+            fontFamily: "Source Sans Pro",
             fontWeight: 400,
         },
-        fontFamily: [
-            "-apple-system",
-            "BlinkMacSystemFont",
-            '"Segoe UI"',
-            "Roboto",
-            '"Helvetica Neue"',
-            "Arial",
-            "sans-serif",
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(","),
-        fontWeight: 400,
+        fontFamily: "Source Sans Pro",
+        fontWeight: 300,
     },
 });
 

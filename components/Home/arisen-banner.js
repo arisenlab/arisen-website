@@ -53,7 +53,6 @@ const ArisenBanner = () => {
                     <Button
                         variant="contained"
                         color="primary"
-                        style={{ backgroundColor: "#035B96", color: "#fff" }}
                         onClick={() => {
                             router.push("/projects");
                         }}
@@ -62,8 +61,8 @@ const ArisenBanner = () => {
                     </Button>
                     <Button
                         variant="contained"
+                        color="secondary"
                         onClick={() => window.open("https://github.com/CZerkS")}
-                        style={{ backgroundColor: "#333333", color: "#fff" }}
                     >
                         Github
                     </Button>

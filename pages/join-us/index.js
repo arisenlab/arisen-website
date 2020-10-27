@@ -2,8 +2,11 @@ import { Grid, Typography, Paper, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import dynamic from "next/dynamic";
+
 const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/page-title-section")
+    import("../../components/utilities/templates").then(
+        template => template.PageTitle
+    )
 );
 
 const useStyles = makeStyles(theme => ({
@@ -32,11 +35,18 @@ const JoinUs = () => {
         <div className={classes.joinUsContainer}>
             <div style={{ height: 150 }} />
 
-            <PageTitleSection
-                logoURL="/JoinUs/joinus-logo.png"
-                title="Join Us"
-                subtitle="Improve your skills through solving real world problems"
-            />
+            <PageTitleSection logoURL="/JoinUs/joinus-logo.png">
+                <Typography variant="h3">Join Us</Typography>
+
+                <Typography variant="h5" gutterBottom>
+                    Improve your skills through solving real world problems
+                </Typography>
+
+                <Typography variant="body1">
+                    No need to be shy, be yourself and help us build ARISEn
+                    more.
+                </Typography>
+            </PageTitleSection>
 
             <Typography variant="h4">Open Roles</Typography>
 
@@ -90,6 +100,27 @@ const JoinUs = () => {
                             <li>Android and iOS Development</li>
                         </ul>
                     </Paper>
+                </Grid>
+            </Grid>
+
+            <div style={{ height: 30 }} />
+
+            <Grid container spacing={2} direction="row">
+                <Grid item md={12}>
+                    <Typography variant="h4">Application Process</Typography>
+                    <Typography variant="h6">
+                        <ol>
+                            <li>
+                                Click the button below to access the Google
+                                Forms.
+                            </li>
+                            <li>
+                                Answer the provided information. Always remember
+                                be Honest :)
+                            </li>
+                            <li>Wait for our announcements/email</li>
+                        </ol>
+                    </Typography>
                 </Grid>
             </Grid>
 

@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import ListSubheader from "@material-ui/core/ListSubheader";
+import Typography from "@material-ui/core/Typography";
 
 import { useRouter } from "next/router";
 import routes from "./routes";
@@ -33,8 +33,14 @@ export default function TemporaryDrawer({ onChosen }) {
                 component="nav"
                 aria-labelledby="list-subheader"
                 subheader={
-                    <ListSubheader component="div" id="list-subheader">
-                        ARISEN
+                    <ListSubheader
+                        component="div"
+                        id="list-subheader"
+                        style={{ marginTop: 15 }}
+                    >
+                        <Typography variant="h5" color="secondary">
+                            ARISEN
+                        </Typography>
                     </ListSubheader>
                 }
                 className={classes.root}
@@ -45,7 +51,13 @@ export default function TemporaryDrawer({ onChosen }) {
                         key={link.linkName}
                         onClick={() => navigateClick(link.pageURL)}
                     >
-                        <ListItemText primary={link.linkName} />
+                        <ListItemText
+                            primary={
+                                <Typography variant="h6">
+                                    {link.linkName}
+                                </Typography>
+                            }
+                        />
                     </ListItem>
                 ))}
             </List>

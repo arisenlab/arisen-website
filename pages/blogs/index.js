@@ -1,12 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 import WP from "../../utils/wordpress";
 
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/page-title-section")
+    import("../../components/utilities/templates").then(
+        template => template.PageTitle
+    )
 );
+
 const BlogCard = dynamic(() => import("../../components/Blog/blog-card-item"));
 
 const useStyles = makeStyles(theme => ({
@@ -27,11 +31,19 @@ const Blog = ({ posts, users }) => {
         <div className={classes.blogContainer}>
             <div style={{ height: 150 }} />
 
-            <PageTitleSection
-                logoURL="/Blog/blog-logo.png"
-                title="Blog"
-                subtitle="Wanna know our stories? Feel free to read the articles"
-            />
+            <PageTitleSection logoURL="/Blog/blog-logo.png">
+                <Typography variant="h3">Blog</Typography>
+
+                <Typography variant="h5" gutterBottom>
+                    Wanna know our stories? Feel free to read the articles
+                </Typography>
+
+                <Typography variant="body1">
+                    Feel free to read articles, tips, stories, etc. from our
+                    beloved members. Also, you can ask them questions regarding
+                    how
+                </Typography>
+            </PageTitleSection>
 
             <div>
                 <Grid container spacing={2}>

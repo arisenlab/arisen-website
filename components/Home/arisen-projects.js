@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Template from "../utilities/templates";
+import { ParagraphWithPicture } from "../utilities/templates";
 
 import projects from "../../data/projects";
 
@@ -31,23 +31,26 @@ const ArisenProjects = () => {
                         let mustAlter = counter % 2 !== 0 ? true : false;
                         counter++;
                         return (
-                            <Template
-                                imageURL={project.logo}
-                                alter={mustAlter}
-                                imagePercent="70%"
-                                key={project.id}
-                            >
-                                <Typography
-                                    gutterBottom={true}
-                                    variant="h4"
-                                    component="h1"
+                            <div key={project.id}>
+                                <ParagraphWithPicture
+                                    imageURL={project.logo}
+                                    alter={mustAlter}
+                                    imagePercent="70%"
                                 >
-                                    {project.name}
-                                </Typography>
-                                <Typography variant="body1" component="p">
-                                    {project.description}
-                                </Typography>
-                            </Template>
+                                    <Typography
+                                        gutterBottom={true}
+                                        variant="h4"
+                                        component="h1"
+                                    >
+                                        {project.name}
+                                    </Typography>
+                                    <Typography variant="body1" component="p">
+                                        {project.description}
+                                    </Typography>
+                                </ParagraphWithPicture>
+
+                                <div style={{ marginBottom: 30 }} />
+                            </div>
                         );
                     })}
                 </Grid>

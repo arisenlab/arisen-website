@@ -27,7 +27,7 @@ const InfoBadge = ({ infos }) => {
                             marginRight: 7,
                             borderRadius: 15,
                             textAlign: "center",
-                            backgroundColor: "#CCCCCC",
+                            backgroundColor: "#e7ecff",
                             color: "#3E3E3E",
                         }}
                         key={index}

@@ -14,6 +14,10 @@ export default class MyDocument extends Document {
                         content={theme.palette.primary.main}
                     />
                     <link
+                        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap"
+                        rel="stylesheet"
+                    ></link>
+                    <link
                         rel="stylesheet"
                         href="https://unpkg.com/nprogress@0.2.0/nprogress.css"
                     />

@@ -66,7 +66,7 @@ export default function ArisenFrontend(props) {
             <Head>
                 {thisRouteObject ? (
                     <>
-                        <title>{thisRouteObject.linkName} | ARISEn</title>
+                        <title>{thisRouteObject.linkName} | ARISEn Labs</title>
                         <meta
                             type="description"
                             content={thisRouteObject.description}
