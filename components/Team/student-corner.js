@@ -25,12 +25,13 @@ const StudentCorner = ({ studentInfos: students }) => {
                 {students.map(student => {
                     return (
                         <TeamCard
-                            profile={student.profilePicture}
-                            fullname={student.fullname}
-                            cluster={student.cluster}
-                            roles={student.roles}
-                            yearJoined={student.yearJoined}
-                            key={student.id}
+                            id={student.acf.id}
+                            profile={student.acf.profile_picture}
+                            fullname={student.acf.full_name}
+                            cluster={student.acf.cluster}
+                            roles={student.acf.roles}
+                            yearJoined={student.acf.year_joined}
+                            key={student.acf.id}
                         />
                     );
                 })}

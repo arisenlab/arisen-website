@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const cleanURL = url => {
-    return url.replace(/^.*\/\/[^\/]+/, "");
+    return url.replace(/^.*\/\/[^\/]+\/index.php/, "blogs");
 };
 
 export default function BlogCard({ post, author }) {

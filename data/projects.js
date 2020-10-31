@@ -2,7 +2,6 @@ export default [
     {
         id: "1",
         name: "AdDU InfoPro",
-        description: "Mobile App for AdDU students",
         platform: "mobile",
         builtBy: ["JQuery", "Bootstrap", "Flutter", "Firebase", "PHP"],
         docs: "A Mobile App for AdDU students",
@@ -13,7 +12,6 @@ export default [
     {
         id: "2",
         name: "AdDU Alumni Web App",
-        description: "Web App for AdDU Alumnis",
         platform: "web-app",
         builtBy: ["JQuery", "Bootstrap", "PHP", "MySQL"],
         docs: "A Web App for AdDU Students",

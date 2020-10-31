@@ -16,6 +16,8 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
+import WP from "../../utils/wordpress";
+
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(() =>
     import("../../components/utilities/templates").then(
@@ -42,19 +44,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const styles = theme => ({
-    root: {
-        margin: 0,
-        padding: theme.spacing(2),
-    },
-    closeButton: {
-        position: "absolute",
-        right: theme.spacing(1),
-        top: theme.spacing(1),
-        color: theme.palette.grey[500],
-    },
-});
-
 const Projects = ({ projectInfo }) => {
     const classes = useStyles();
     const [currentProject, setCurrentProject] = React.useState(null);
@@ -65,6 +54,56 @@ const Projects = ({ projectInfo }) => {
 
     const handleClose = () => {
         setCurrentProject(null);
+    };
+
+    const platformOutput = platform => {
+        if (platform.toLowerCase() === "mobile") {
+            return (
+                <>
+                    <Typography>Download Here</Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginRight: 10 }}
+                        startIcon={<AppleIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.app_store_link)
+                        }
+                    >
+                        App Store
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<AndroidIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.play_store_link)
+                        }
+                    >
+                        Google Play Store
+                    </Button>
+                </>
+            );
+        }
+
+        if (platform.toLowerCase() === "website") {
+            return (
+                <>
+                    <Typography>Website Link Here</Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginRight: 10 }}
+                        startIcon={<AppleIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.website_link)
+                        }
+                    >
+                        Website Link
+                    </Button>
+                </>
+            );
+        }
     };
 
     return (
@@ -89,10 +128,10 @@ const Projects = ({ projectInfo }) => {
                     return (
                         <ProjectCard
                             key={project.id}
-                            projectName={project.name}
-                            description={project.description}
-                            builtBy={project.builtBy}
-                            projectLogo={project.logo}
+                            projectName={project.acf.project_name}
+                            description={project.acf.description}
+                            builtBy={project.acf.built_by.split(",")}
+                            projectLogo={project.acf.logo}
                             handleClick={() => handleClickOpen(project)}
                         />
                     );
@@ -104,10 +143,10 @@ const Projects = ({ projectInfo }) => {
                 aria-labelledby="customized-dialog-title"
                 open={currentProject !== null}
             >
-                <DialogTitle onClose={handleClose}>
+                <DialogTitle onClose={handleClose} disableTypography>
                     {currentProject ? (
-                        <Typography variant="h4" component="h1">
-                            {currentProject.name}
+                        <Typography variant="h4" component="h4">
+                            {currentProject.acf.project_name}
                         </Typography>
                     ) : null}
                     <IconButton
@@ -121,31 +160,15 @@ const Projects = ({ projectInfo }) => {
                 <DialogContent dividers>
                     {currentProject ? (
                         <>
-                            <DialogContentText>
-                                <Typography gutterBottom>
-                                    {currentProject.description}
-                                </Typography>
-                            </DialogContentText>
-                            {currentProject.platform === "mobile" ? (
-                                <>
-                                    <Typography>Download Here</Typography>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        style={{ marginRight: 10 }}
-                                        startIcon={<AppleIcon />}
-                                    >
-                                        App Store
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        startIcon={<AndroidIcon />}
-                                    >
-                                        Google Play Store
-                                    </Button>
-                                </>
-                            ) : null}
+                            <Typography
+                                gutterBottom
+                                dangerouslySetInnerHTML={{
+                                    __html: currentProject.acf.description,
+                                }}
+                            />
+                            {currentProject.acf.platform.map(platform => {
+                                return platformOutput(platform);
+                            })}
                         </>
                     ) : null}
                 </DialogContent>
@@ -160,6 +183,14 @@ const Projects = ({ projectInfo }) => {
 };
 
 export async function getStaticProps() {
+    let projectInfo = [];
+
+    try {
+        projectInfo = await WP.arisenProjects();
+    } catch {
+        projectInfo = [];
+    }
+
     return { props: { projectInfo } };
 }
 

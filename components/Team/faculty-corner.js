@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
 import TeamCard from "./team-card-item";
 import SectionHeader from "./section-header";
@@ -24,12 +23,13 @@ const FacultyCorner = ({ facultyInfo: faculties }) => {
                 {faculties.map(faculty => {
                     return (
                         <TeamCard
-                            profile={faculty.profilePicture}
-                            fullname={faculty.fullname}
-                            cluster={faculty.cluster}
-                            roles={faculty.roles}
-                            yearJoined={faculty.yearJoined}
-                            key={faculty.id}
+                            id={faculty.acf.id}
+                            profile={faculty.acf.profile_picture}
+                            fullname={faculty.acf.full_name}
+                            cluster={faculty.acf.cluster}
+                            roles={faculty.acf.roles}
+                            yearJoined={faculty.acf.year_joined}
+                            key={faculty.acf.id}
                         />
                     );
                 })}

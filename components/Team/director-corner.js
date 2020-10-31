@@ -22,11 +22,12 @@ const DirectorCorner = ({ directorInfo: director }) => {
                 />
 
                 <TeamCard
-                    profile={director.profilePicture}
-                    fullname={director.fullname}
-                    cluster={director.cluster}
-                    roles={director.roles}
-                    yearJoined={director.yearJoined}
+                    id={director[0].acf.id}
+                    profile={director[0].acf.profile_picture}
+                    fullname={director[0].acf.full_name}
+                    cluster={director[0].acf.cluster}
+                    roles={director[0].acf.roles}
+                    yearJoined={director[0].acf.year_joined}
                 />
             </Grid>
         </div>

@@ -1,7 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
+import WP from "../../utils/wordpress";
+
 import dynamic from "next/dynamic";
+
+import sort from "fast-sort";
 
 const PageTitleSection = dynamic(() =>
     import("../../components/utilities/templates").then(
@@ -79,9 +83,51 @@ const Team = ({ directorInfos, facultyInfos, studentInfos }) => {
 };
 
 export async function getStaticProps(ctx) {
-    return {
-        props: { directorInfos, facultyInfos, studentInfos },
-    };
+    try {
+        const [directorInfo, facultyInfo, studentInfo] = await Promise.all([
+            WP.arisenDirector(),
+            WP.arisenFaculty(),
+            WP.arisenStudents(),
+        ]);
+
+        if (directorInfo || facultyInfo || studentInfo) {
+            sort(facultyInfo).by([
+                { asc: faculty => parseInt(faculty.acf.year_joined) },
+                { asc: faculty => faculty.acf.full_name },
+            ]);
+
+            sort(studentInfo).by([
+                { asc: student => parseInt(student.acf.year_joined) },
+                { asc: student => student.acf.full_name },
+            ]);
+
+            return {
+                props: {
+                    directorInfos: directorInfo,
+                    facultyInfos: facultyInfo,
+                    studentInfos: studentInfo,
+                },
+                revalidate: 10,
+            };
+        } else
+            return {
+                props: {
+                    directorInfos: [],
+                    facultyInfos: [],
+                    studentInfos: [],
+                },
+                revalidate: 10,
+            };
+    } catch {
+        return {
+            props: {
+                directorInfos: [],
+                facultyInfos: [],
+                studentInfos: [],
+            },
+            revalidate: 10,
+        };
+    }
 }
 
 export default Team;
