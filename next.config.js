@@ -36,7 +36,7 @@ module.exports = {
         data.map(info => {
             path[`/team/${info.slug}`] = {
                 page: "/team",
-                query: { slug: cleanURL(info.slug) },
+                query: { id: cleanURL(info.slug) },
             };
         });
         return path;
