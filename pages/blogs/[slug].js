@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import DefaultErrorPage from "next/error";
 
-import { frontendURL, mediaURL } from "../utils/constants";
+import { frontendURL, mediaURL } from "../../utils/constants";
 
 import {
     Grid,
