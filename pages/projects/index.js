@@ -47,54 +47,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const platformOutput = platform => {
-    if (platform.toLowerCase() === "mobile") {
-        return (
-            <>
-                <Typography>Download Here</Typography>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ marginRight: 10 }}
-                    startIcon={<AppleIcon />}
-                    onClick={() =>
-                        window.open(currentProject.acf.app_store_link)
-                    }
-                >
-                    App Store
-                </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<AndroidIcon />}
-                    onClick={() =>
-                        window.open(currentProject.acf.play_store_link)
-                    }
-                >
-                    Google Play Store
-                </Button>
-            </>
-        );
-    }
-
-    if (platform.toLowerCase() === "website") {
-        return (
-            <>
-                <Typography>Website Link Here</Typography>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ marginRight: 10 }}
-                    startIcon={<AppleIcon />}
-                    onClick={() => window.open(currentProject.acf.website_link)}
-                >
-                    Website Link
-                </Button>
-            </>
-        );
-    }
-};
-
 const Projects = ({ projectInfo }) => {
     const classes = useStyles();
     const [currentProject, setCurrentProject] = React.useState(null);
@@ -105,6 +57,56 @@ const Projects = ({ projectInfo }) => {
 
     const handleClose = () => {
         setCurrentProject(null);
+    };
+
+    const platformOutput = platform => {
+        if (platform.toLowerCase() === "mobile") {
+            return (
+                <>
+                    <Typography>Download Here</Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginRight: 10 }}
+                        startIcon={<AppleIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.app_store_link)
+                        }
+                    >
+                        App Store
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<AndroidIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.play_store_link)
+                        }
+                    >
+                        Google Play Store
+                    </Button>
+                </>
+            );
+        }
+
+        if (platform.toLowerCase() === "website") {
+            return (
+                <>
+                    <Typography>Website Link Here</Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginRight: 10 }}
+                        startIcon={<AppleIcon />}
+                        onClick={() =>
+                            window.open(currentProject.acf.website_link)
+                        }
+                    >
+                        Website Link
+                    </Button>
+                </>
+            );
+        }
     };
 
     return (

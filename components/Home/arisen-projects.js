@@ -1,7 +1,8 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { ParagraphWithPicture } from "../utilities/templates";
@@ -15,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const ArisenProjects = ({ projects }) => {
     const classes = useStyles();
+    const router = useRouter();
 
     let counter = 0;
 
@@ -42,7 +44,11 @@ const ArisenProjects = ({ projects }) => {
                                     >
                                         {project.acf.project_name}
                                     </Typography>
-                                    <Typography variant="body1" component="p">
+                                    <Typography
+                                        gutterBottom
+                                        variant="body1"
+                                        component="p"
+                                    >
                                         {project.acf.description}
                                     </Typography>
                                 </ParagraphWithPicture>
@@ -51,6 +57,16 @@ const ArisenProjects = ({ projects }) => {
                             </div>
                         );
                     })}
+                    <Grid item xs={12} align="center">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            onClick={() => router.push("/projects")}
+                        >
+                            More Projects
+                        </Button>
+                    </Grid>
                 </Grid>
             </div>
         </div>
