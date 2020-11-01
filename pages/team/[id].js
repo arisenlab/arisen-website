@@ -151,10 +151,8 @@ const Profile = ({ info, position }) => {
 };
 
 export async function getStaticPaths() {
-    let directorInfo = [],
-        facultyInfo = [],
-        studentInfo = [];
-    let data;
+    let directorInfo, facultyInfo, studentInfo;
+    let data = [];
 
     try {
         [directorInfo, facultyInfo, studentInfo] = await Promise.all([
@@ -162,10 +160,9 @@ export async function getStaticPaths() {
             WP.arisenFaculty().slug(ctx.params.id),
             WP.arisenStudents().slug(ctx.params.id),
         ]);
-
         data = directorInfo.concat(facultyInfo);
         data = data.concat(studentInfo);
-    } catch {
+    } catch (err) {
         data = [];
     }
 
@@ -175,15 +172,13 @@ export async function getStaticPaths() {
 
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 }
 
 export async function getStaticProps(ctx) {
-    let directorInfo = [],
-        facultyInfo = [],
-        studentInfo = [];
-    let data;
+    let directorInfo, facultyInfo, studentInfo;
+    let data = [];
 
     try {
         [directorInfo, facultyInfo, studentInfo] = await Promise.all([
@@ -194,7 +189,7 @@ export async function getStaticProps(ctx) {
 
         data = directorInfo.concat(facultyInfo);
         data = data.concat(studentInfo);
-    } catch {
+    } catch (err) {
         return { props: { info: [], position: "" }, revalidate: 10 };
     }
 
