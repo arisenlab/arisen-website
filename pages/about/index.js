@@ -5,8 +5,11 @@ import dynamic from "next/dynamic";
 
 import aboutInfo from "../../data/about";
 
-const AboutTemplate = dynamic(() =>
-    import("../../components/About/about-template")
+import Loading from "../../components/utilities/loading";
+
+const AboutTemplate = dynamic(
+    () => import("../../components/About/about-template"),
+    { loading: () => <Loading /> }
 );
 
 const useStyles = makeStyles(theme => ({

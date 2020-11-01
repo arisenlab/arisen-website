@@ -18,6 +18,7 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import WP from "../../utils/wordpress";
 import { mediaURL } from "../../utils/constants";
+import Loading from "../../components/utilities/loading";
 
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(

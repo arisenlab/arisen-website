@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 
 import { mediaURL } from "../../utils/constants";
+import Loading from "../../components/utilities/loading";
 
 const PageTitleSection = dynamic(
     () =>

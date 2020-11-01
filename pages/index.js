@@ -2,10 +2,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
 import WP from "../utils/wordpress";
 
-const ArisenBanner = dynamic(() => import("../components/Home/arisen-banner"));
-const ArisenFacts = dynamic(() => import("../components/Home/arisen-facts"));
-const ArisenProjects = dynamic(() =>
-    import("../components/Home/arisen-projects")
+import Loading from "../components/utilities/loading";
+
+const ArisenBanner = dynamic(() => import("../components/Home/arisen-banner"), {
+    loading: () => <Loading />,
+});
+const ArisenFacts = dynamic(() => import("../components/Home/arisen-facts"), {
+    loading: () => <Loading />,
+});
+const ArisenProjects = dynamic(
+    () => import("../components/Home/arisen-projects"),
+    { loading: () => <Loading /> }
 );
 
 const useStyles = makeStyles(theme => ({
