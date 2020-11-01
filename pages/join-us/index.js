@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import dynamic from "next/dynamic";
 
+import { mediaURL } from "../../utils/constants";
+
 const PageTitleSection = dynamic(() =>
     import("../../components/utilities/templates").then(
         template => template.PageTitle
@@ -35,7 +37,7 @@ const JoinUs = () => {
         <div className={classes.joinUsContainer}>
             <div style={{ height: 150 }} />
 
-            <PageTitleSection logoURL="/JoinUs/joinus-logo.png">
+            <PageTitleSection logoURL={`${mediaURL}/2020/11/joinus-logo.png`}>
                 <Typography variant="h3">Join Us</Typography>
 
                 <Typography variant="h5" gutterBottom>

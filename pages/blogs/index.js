@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import WP from "../../utils/wordpress";
+import { mediaURL } from "../../utils/constants";
 
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(() =>
@@ -31,7 +32,7 @@ const Blog = ({ posts, users }) => {
         <div className={classes.blogContainer}>
             <div style={{ height: 150 }} />
 
-            <PageTitleSection logoURL="/Blog/blog-logo.png">
+            <PageTitleSection logoURL={`${mediaURL}/2020/11/blog-logo.png`}>
                 <Typography variant="h3">Blog</Typography>
 
                 <Typography variant="h5" gutterBottom>

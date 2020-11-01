@@ -17,6 +17,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
 import WP from "../../utils/wordpress";
+import { mediaURL } from "../../utils/constants";
 
 import dynamic from "next/dynamic";
 const PageTitleSection = dynamic(() =>
@@ -28,8 +29,6 @@ const PageTitleSection = dynamic(() =>
 const ProjectCard = dynamic(() =>
     import("../../components/Projects/project-card-item")
 );
-
-import projectInfo from "../../data/projects";
 
 const useStyles = makeStyles(theme => ({
     projectsContainer: {
@@ -44,6 +43,54 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const platformOutput = platform => {
+    if (platform.toLowerCase() === "mobile") {
+        return (
+            <>
+                <Typography>Download Here</Typography>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginRight: 10 }}
+                    startIcon={<AppleIcon />}
+                    onClick={() =>
+                        window.open(currentProject.acf.app_store_link)
+                    }
+                >
+                    App Store
+                </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<AndroidIcon />}
+                    onClick={() =>
+                        window.open(currentProject.acf.play_store_link)
+                    }
+                >
+                    Google Play Store
+                </Button>
+            </>
+        );
+    }
+
+    if (platform.toLowerCase() === "website") {
+        return (
+            <>
+                <Typography>Website Link Here</Typography>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginRight: 10 }}
+                    startIcon={<AppleIcon />}
+                    onClick={() => window.open(currentProject.acf.website_link)}
+                >
+                    Website Link
+                </Button>
+            </>
+        );
+    }
+};
+
 const Projects = ({ projectInfo }) => {
     const classes = useStyles();
     const [currentProject, setCurrentProject] = React.useState(null);
@@ -56,61 +103,11 @@ const Projects = ({ projectInfo }) => {
         setCurrentProject(null);
     };
 
-    const platformOutput = platform => {
-        if (platform.toLowerCase() === "mobile") {
-            return (
-                <>
-                    <Typography>Download Here</Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        style={{ marginRight: 10 }}
-                        startIcon={<AppleIcon />}
-                        onClick={() =>
-                            window.open(currentProject.acf.app_store_link)
-                        }
-                    >
-                        App Store
-                    </Button>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        startIcon={<AndroidIcon />}
-                        onClick={() =>
-                            window.open(currentProject.acf.play_store_link)
-                        }
-                    >
-                        Google Play Store
-                    </Button>
-                </>
-            );
-        }
-
-        if (platform.toLowerCase() === "website") {
-            return (
-                <>
-                    <Typography>Website Link Here</Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        style={{ marginRight: 10 }}
-                        startIcon={<AppleIcon />}
-                        onClick={() =>
-                            window.open(currentProject.acf.website_link)
-                        }
-                    >
-                        Website Link
-                    </Button>
-                </>
-            );
-        }
-    };
-
     return (
         <div className={classes.projectsContainer}>
             <div style={{ height: 150 }} />
 
-            <PageTitleSection logoURL="/Projects/projects-logo.png">
+            <PageTitleSection logoURL={`${mediaURL}/2020/11/projects-logo.png`}>
                 <Typography variant="h3">Projects</Typography>
 
                 <Typography variant="h5" gutterBottom>

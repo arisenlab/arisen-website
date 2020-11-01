@@ -6,8 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { ParagraphWithPicture } from "../utilities/templates";
 
-import projects from "../../data/projects";
-
 const useStyles = makeStyles(theme => ({
     projectsPicture: {
         width: "70%",
@@ -15,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ArisenProjects = () => {
+const ArisenProjects = ({ projects }) => {
     const classes = useStyles();
 
     let counter = 0;
@@ -31,9 +29,9 @@ const ArisenProjects = () => {
                         let mustAlter = counter % 2 !== 0 ? true : false;
                         counter++;
                         return (
-                            <div key={project.id}>
+                            <div key={project.acf.project_name}>
                                 <ParagraphWithPicture
-                                    imageURL={project.logo}
+                                    imageURL={project.acf.home_logo}
                                     alter={mustAlter}
                                     imagePercent="70%"
                                 >
@@ -42,10 +40,10 @@ const ArisenProjects = () => {
                                         variant="h4"
                                         component="h1"
                                     >
-                                        {project.name}
+                                        {project.acf.project_name}
                                     </Typography>
                                     <Typography variant="body1" component="p">
-                                        {project.description}
+                                        {project.acf.description}
                                     </Typography>
                                 </ParagraphWithPicture>
 

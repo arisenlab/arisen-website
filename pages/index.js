@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import dynamic from "next/dynamic";
+import WP from "../utils/wordpress";
 
 const ArisenBanner = dynamic(() => import("../components/Home/arisen-banner"));
 const ArisenFacts = dynamic(() => import("../components/Home/arisen-facts"));
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Home() {
+export default function Home({ projectInfo }) {
     const classes = useStyles();
 
     return (
@@ -30,7 +31,19 @@ export default function Home() {
 
             <div style={{ height: 50 }} />
 
-            <ArisenProjects />
+            <ArisenProjects projects={projectInfo} />
         </div>
     );
+}
+
+export async function getStaticProps() {
+    let projectInfo = [];
+
+    try {
+        projectInfo = await WP.arisenProjects();
+    } catch {
+        projectInfo = [];
+    }
+
+    return { props: { projectInfo } };
 }

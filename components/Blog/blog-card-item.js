@@ -43,7 +43,7 @@ export default function BlogCard({ post, author }) {
 
     React.useEffect(() => {
         if ("rendered" in post.excerpt) {
-            setRenderedExcerpt(post.excerpt.rendered.substring(0, 151) + "...");
+            setRenderedExcerpt(post.excerpt.rendered);
         }
     }, [post.excerpt]);
 
@@ -59,11 +59,6 @@ export default function BlogCard({ post, author }) {
                 <CardActionArea
                     onClick={() => router.push(cleanURL(post.link))}
                 >
-                    <CardMedia
-                        className={classes.media}
-                        image="/About/ARISEn.jpg"
-                        title="Media Picture"
-                    />
                     <CardContent>
                         <Typography
                             gutterBottom

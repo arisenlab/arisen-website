@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import { mediaURL } from "../../utils/constants";
+
 const useStyles = makeStyles(theme => ({
     homeButton: {
         "& > *": {
@@ -35,10 +37,16 @@ const ArisenBanner = () => {
     return (
         <Grid container spacing={1} direction="row" alignItems="center">
             <Grid item align="center" md={6}>
-                <img src="/Home/Home-Logo.png" className={classes.logo} />
+                <img
+                    src={`${mediaURL}/2020/11/Home-Logo.png`}
+                    className={classes.logo}
+                />
             </Grid>
             <Grid item sm className={classes.puzzleContainer}>
-                <img src="/Home/home_design1.png" className={classes.puzzle} />
+                <img
+                    src={`${mediaURL}/2020/11/home_design1.png`}
+                    className={classes.puzzle}
+                />
             </Grid>
             <Grid item md={5}>
                 <Typography variant="h3" component="h3">

@@ -1,5 +1,5 @@
 const Wordpress = require("wpapi");
-const backendURL = "http://arisen-api.addu.edu.ph";
+const { backendURL } = require("./constants");
 
 const wp = new Wordpress({ endpoint: `${backendURL}/index.php/wp-json` });
 

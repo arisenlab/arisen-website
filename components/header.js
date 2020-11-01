@@ -7,7 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import Drawer from "@material-ui/core/Drawer";
 
-import Link from "next/link";
+import { mediaURL } from "../utils/constants";
 
 import Nav from "../navigation/navbar";
 import NavBurger from "../navigation/nav-burger";
@@ -82,7 +82,7 @@ export default function ButtonAppBar() {
 
                     <div className={classes.title}>
                         <img
-                            src="/images/arisen_logo.png"
+                            src={`${mediaURL}/2020/11/arisen_logo.png`}
                             className={classes.arisenLogo}
                         />
                     </div>

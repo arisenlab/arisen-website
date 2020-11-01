@@ -2,6 +2,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../components/theme";
+import { mediaURL } from "../utils/constants";
 
 export default class MyDocument extends Document {
     render() {
@@ -24,7 +25,7 @@ export default class MyDocument extends Document {
                     <link
                         rel="icon"
                         type="image/png"
-                        href="/website_logo.png"
+                        href={`${mediaURL}/2020/11/website_logo.png`}
                     />
                 </Head>
                 <body>

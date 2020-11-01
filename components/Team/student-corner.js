@@ -1,8 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
-import studentInfo from "../../data/team_students";
 import TeamCard from "./team-card-item";
 import SectionHeader from "./section-header";
 

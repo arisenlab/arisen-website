@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
 import WP from "../../utils/wordpress";
+import { mediaURL } from "../../utils/constants";
 
 import dynamic from "next/dynamic";
 
@@ -21,10 +22,6 @@ const FacultyCorner = dynamic(() =>
 const StudentCorner = dynamic(() =>
     import("../../components/Team/student-corner")
 );
-
-import directorInfos from "../../data/team_director";
-import facultyInfos from "../../data/team_faculty";
-import studentInfos from "../../data/team_students";
 
 const useStyles = makeStyles(theme => ({
     teamContainer: {
@@ -47,12 +44,15 @@ const Team = ({ directorInfos, facultyInfos, studentInfos }) => {
     return (
         <div className={classes.teamContainer}>
             <img
-                src="/Team/mindanao_design.png"
+                src={`${mediaURL}/2020/11/mindanao_design.png`}
                 className={classes.mindanaoStyle}
             />
             <div style={{ height: 150 }} />
 
-            <PageTitleSection logoURL="/Team/team-logo.png">
+            <PageTitleSection
+                logoURL={`${mediaURL}/2020/11/team-logo.png`}
+                alt="Team Logo"
+            >
                 <Typography variant="h3">Team</Typography>
 
                 <Typography variant="h5" gutterBottom>
