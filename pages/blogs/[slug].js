@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import DefaultErrorPage from "next/error";
 
+import { frontendURL, mediaURL } from "../utils/constants";
+
 import {
     Grid,
     Typography,
@@ -71,6 +73,32 @@ const Blog = props => {
 
     return (
         <div className={classes.blogContainer}>
+            <Head>
+                <title>{post.title.rendered} - ARISEn Blogs</title>
+                <meta
+                    name="description"
+                    content={post.excerpt.rendered.replace(/<[^>]+>/g, "")}
+                />
+                <meta name="twitter:card" value="summary" />
+                <meta property="og:title" content={post.title.rendered} />
+                <meta property="og:type" content="blog" />
+                <meta
+                    property="og:image"
+                    content={`${mediaURL}/2020/11/arisen-seo-image.jpg`}
+                />
+                <meta
+                    name="twitter:image"
+                    content={`${mediaURL}/2020/11/arisen-seo-image.jpg`}
+                />
+                <meta
+                    property="og:url"
+                    content={`${frontendURL}/blogs/${post.slug}`}
+                />
+                <meta
+                    property="og:description"
+                    content={post.excerpt.rendered.replace(/<[^>]+>/g, "")}
+                />
+            </Head>
             <div style={{ height: 150 }} />
             <Grid container direction="row" spacing={4}>
                 <Grid item>

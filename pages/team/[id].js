@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { Typography, Paper, Grid, Divider } from "@material-ui/core";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -11,6 +12,7 @@ import ClusterBadge from "../../components/Team/cluster-badge";
 import MultiBadges from "../../components/utilities/multi-badges";
 
 import WP from "../../utils/wordpress";
+import { frontendURL } from "../../utils/constants";
 
 const useStyles = makeStyles(theme => ({
     profileContainer: {
@@ -47,6 +49,31 @@ const Profile = ({ info, position }) => {
             <div style={{ height: 150 }} />
             {info ? (
                 <>
+                    <Head>
+                        <title>{info.acf.id} - ARISEn Team</title>
+                        <meta
+                            name="description"
+                            content={`${info.acf.full_name} of ARISEn Labs`}
+                        />
+                        <meta property="og:title" content={info.acf.id} />
+                        <meta property="og:type" content="Team Profile" />
+                        <meta
+                            property="og:image"
+                            content={`${info.acf.profile_picture}`}
+                        />
+                        <meta
+                            name="twitter:image"
+                            content={`${info.acf.profile_picture}`}
+                        />
+                        <meta
+                            property="og:url"
+                            content={`${frontendURL}/team/${info.slug}`}
+                        />
+                        <meta
+                            property="og:description"
+                            content={`${info.acf.full_name} of ARISEn Labs`}
+                        />
+                    </Head>
                     <Paper elevation={3}>
                         <Grid
                             container
