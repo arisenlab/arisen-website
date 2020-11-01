@@ -5,10 +5,12 @@ import dynamic from "next/dynamic";
 
 import { mediaURL } from "../../utils/constants";
 
-const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/templates").then(
-        template => template.PageTitle
-    )
+const PageTitleSection = dynamic(
+    () =>
+        import("../../components/utilities/templates").then(
+            template => template.PageTitle
+        ),
+    { loading: () => <Loading /> }
 );
 
 const useStyles = makeStyles(theme => ({

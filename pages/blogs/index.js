@@ -6,13 +6,17 @@ import WP from "../../utils/wordpress";
 import { mediaURL } from "../../utils/constants";
 
 import dynamic from "next/dynamic";
-const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/templates").then(
-        template => template.PageTitle
-    )
+const PageTitleSection = dynamic(
+    () =>
+        import("../../components/utilities/templates").then(
+            template => template.PageTitle
+        ),
+    { loading: () => <Loading /> }
 );
 
-const BlogCard = dynamic(() => import("../../components/Blog/blog-card-item"));
+const BlogCard = dynamic(() => import("../../components/Blog/blog-card-item"), {
+    loading: () => <Loading />,
+});
 
 const useStyles = makeStyles(theme => ({
     blogContainer: {

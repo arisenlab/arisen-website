@@ -20,14 +20,17 @@ import WP from "../../utils/wordpress";
 import { mediaURL } from "../../utils/constants";
 
 import dynamic from "next/dynamic";
-const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/templates").then(
-        template => template.PageTitle
-    )
+const PageTitleSection = dynamic(
+    () =>
+        import("../../components/utilities/templates").then(
+            template => template.PageTitle
+        ),
+    { loading: () => <Loading /> }
 );
 
-const ProjectCard = dynamic(() =>
-    import("../../components/Projects/project-card-item")
+const ProjectCard = dynamic(
+    () => import("../../components/Projects/project-card-item"),
+    { loading: () => <Loading /> }
 );
 
 const useStyles = makeStyles(theme => ({

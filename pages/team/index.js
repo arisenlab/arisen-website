@@ -8,19 +8,26 @@ import dynamic from "next/dynamic";
 
 import sort from "fast-sort";
 
-const PageTitleSection = dynamic(() =>
-    import("../../components/utilities/templates").then(
-        template => template.PageTitle
-    )
+import Loading from "../../components/utilities/loading";
+
+const PageTitleSection = dynamic(
+    () =>
+        import("../../components/utilities/templates").then(
+            template => template.PageTitle
+        ),
+    { loading: () => <Loading /> }
 );
-const DirectorCorner = dynamic(() =>
-    import("../../components/Team/director-corner")
+const DirectorCorner = dynamic(
+    () => import("../../components/Team/director-corner"),
+    { loading: () => <Loading /> }
 );
-const FacultyCorner = dynamic(() =>
-    import("../../components/Team/faculty-corner")
+const FacultyCorner = dynamic(
+    () => import("../../components/Team/faculty-corner"),
+    { loading: () => <Loading /> }
 );
-const StudentCorner = dynamic(() =>
-    import("../../components/Team/student-corner")
+const StudentCorner = dynamic(
+    () => import("../../components/Team/student-corner"),
+    { loading: () => <Loading /> }
 );
 
 const useStyles = makeStyles(theme => ({
