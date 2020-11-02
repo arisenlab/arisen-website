@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
         left: 100,
         width: 400,
         zIndex: -1,
+        [theme.breakpoints.down("sm")]: {
+            display: "none",
+        },
     },
 }));
 

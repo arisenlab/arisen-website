@@ -146,13 +146,9 @@ const Profile = ({ info, position }) => {
 
                     <Grid container style={{ marginTop: 25 }}>
                         <Grid item>
-                            <Typography
-                                variant="body1"
-                                component="p"
-                                dangerouslySetInnerHTML={{
-                                    __html: info.acf.biography,
-                                }}
-                            />
+                            <Typography variant="body1" component="p">
+                                {info.acf.biography}
+                            </Typography>
                         </Grid>
                     </Grid>
 
