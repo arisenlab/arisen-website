@@ -5,6 +5,7 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import LanguageIcon from "@material-ui/icons/Language";
+import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Loading from "../../components/utilities/loading";
@@ -37,6 +38,9 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         wrap: "wrap",
         marginTop: 15,
+    },
+    socialMediaButton: {
+        "&:hover": { cursor: "pointer" },
     },
 }));
 
@@ -114,29 +118,53 @@ const Profile = ({ info, position }) => {
                                 <div className={classes.accounts}>
                                     {info.acf.github_link !== "" ? (
                                         <GitHubIcon
+                                            className={
+                                                classes.socialMediaButton
+                                            }
                                             fontSize="large"
                                             style={{
                                                 marginRight: 10,
                                                 color: "#24292e",
                                             }}
+                                            onClick={() =>
+                                                window.open(
+                                                    info.acf.github_link
+                                                )
+                                            }
                                         />
                                     ) : null}
                                     {info.acf.linkedin_link !== "" ? (
                                         <LinkedInIcon
+                                            className={
+                                                classes.socialMediaButton
+                                            }
                                             fontSize="large"
                                             style={{
                                                 marginRight: 10,
                                                 color: "#2867B2",
                                             }}
+                                            onClick={() =>
+                                                window.open(
+                                                    info.acf.linkedin_link
+                                                )
+                                            }
                                         />
                                     ) : null}
                                     {info.acf.website_link !== "" ? (
                                         <LanguageIcon
+                                            className={
+                                                classes.socialMediaButton
+                                            }
                                             fontSize="large"
                                             style={{
                                                 marginRight: 10,
                                                 color: "#62a12b",
                                             }}
+                                            onClick={() =>
+                                                window.open(
+                                                    info.acf.website_link
+                                                )
+                                            }
                                         />
                                     ) : null}
                                 </div>
